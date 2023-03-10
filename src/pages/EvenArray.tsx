@@ -16,9 +16,22 @@ var kelvin: ArrayNum = {
 
 
 const EvenArray = () => {
-  const evenValues = [];
   const navigate = useNavigate();
 
+  const allValues = [];
+  for (const key in kelvin) {
+    if (kelvin.hasOwnProperty(key)) {
+      for (const element of kelvin[key]) {
+        allValues.push(element);
+      }
+    }
+  }
+
+  const input = allValues
+    .map((value, index) => ((index) % 10 === 0) ? `\n${value}` : `${value}`)
+    .join(", ");
+
+  const evenValues = [];
   for (const key in kelvin) {
     if (kelvin.hasOwnProperty(key)) {
       for (const element of kelvin[key]) {
@@ -32,13 +45,29 @@ const EvenArray = () => {
   const output = evenValues.join(', ');
 
   return (
-    <>
+    <div style={{ marginLeft: "50px" }}>
       <h1>Even Values By Kelvin</h1>
+
+      <h3>Input: </h3>
+      <pre>{input}</pre>
+
+      <h3>Output with for loop: </h3>
       <p>{output}</p>
+
+      <h3>Output with map: </h3>
+      <p>
+        {
+          Object.values(kelvin)
+          .map((array) => array.filter((element) => element % 2 === 0))
+          .flat().join(", ")
+        }
+      </p>
+
+
       <Button variant='contained' onClick={ () => {
         navigate("/");
       } }>Back to Home</Button>
-    </>
+    </div>
   );
 }
 
