@@ -7,7 +7,7 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import ViewAgendaOutlined from "@mui/icons-material/ViewAgendaOutlined";
 
 import { Box, TextField, Button, Grid } from "@mui/material";
-import { TODO_DETAILS_PATH } from '../constants/routes';
+import { HOME, TODO_DETAILS_PATH } from '../constants/routes';
 
 import {
   collection, 
@@ -79,7 +79,7 @@ const ToDos = () => {
       flexDirection: "column",
     }}>
       <br/><br/>
-      <Button variant="contained" onClick={ () => navigate("/") }>Back to Home</Button>
+      <Button variant="contained" onClick={ () => navigate(HOME) }>Back to Home</Button>
       <Box
         display={"flex"}
         alignItems={"center"}

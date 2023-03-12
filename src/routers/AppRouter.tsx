@@ -8,6 +8,7 @@ const AppRoutes = () => {
 
   useEffect(() => {
     const route = routes.find((r) => r.path === location.pathname);
+    console.info(location.pathname);
     if (route) {
       document.title = `${route.name}`;
     }
