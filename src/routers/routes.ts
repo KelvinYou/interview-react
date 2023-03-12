@@ -62,7 +62,7 @@ const routes: RouteType[] = [
   {
     path: ROUTES.TODO_DETAILS_PATH,
     component: TodoDetails,
-    name: "ToDos Screen",
+    name: "ToDo Details",
     protected: false,
   },
 ];
