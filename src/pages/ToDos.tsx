@@ -25,7 +25,7 @@ interface Props {}
 interface Todo {
   id: string;
   subject: string;
-  isCompleted: boolean;
+  completed: boolean;
 }
 
 const ToDos = () => {
@@ -63,7 +63,7 @@ const ToDos = () => {
       const updatedTodos = snapshot.docs.map((doc) => ({
         id: doc.id,
         subject: doc.data().subject as string,
-        isCompleted: doc.data().completed as boolean,
+        completed: doc.data().completed as boolean,
       }));
       setTodos(updatedTodos);
     });
@@ -123,7 +123,7 @@ const ToDos = () => {
             maxWidth={"600px"}
           >
             <h1>{todo.subject}</h1>
-            <p>{todo.isCompleted ? "Completed" : "Haven't Complete"}</p>
+            <p>{todo.completed ? "Completed" : "Haven't Complete"}</p>
             <Grid
               container spacing={3}
             >
@@ -142,12 +142,12 @@ const ToDos = () => {
 
                 <Button variant='contained'
                   onClick={() => {
-                    updateTodo(todo.id, todo.isCompleted);
+                    updateTodo(todo.id, todo.completed);
                   }}
                   fullWidth
                   color='primary'
                 >
-                  {todo.isCompleted ? "Set Incomplete" : "Set Complete"} {" "}
+                  {todo.completed ? "Set Incomplete" : "Set Complete"} {" "}
                   <EditIcon />
                 </Button>
               </Grid>

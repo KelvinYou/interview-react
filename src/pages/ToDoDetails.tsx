@@ -22,7 +22,7 @@ interface Props {}
 interface Todo {
   id: string;
   subject: string;
-  isCompleted: boolean;
+  completed: boolean;
 }
 
 const TodoDetails = ({}: Props) => {
@@ -30,7 +30,7 @@ const TodoDetails = ({}: Props) => {
   const [editable, setEditable] = useState(false);
   const [subject, setSubject] = useState("");
   const [doneFetch, setDoneFetch] = useState(false);
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [completed, setIsCompleted] = useState(false);
   const [undoAble, setUndoAble] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const TodoDetails = ({}: Props) => {
         setTodo({
           id: docSnap.id,
           subject: docSnap.data().subject as string,
-          isCompleted: docSnap.data().completed as boolean,
+          completed: docSnap.data().completed as boolean,
         });
       } else {
         console.log("No such document!");
@@ -58,7 +58,7 @@ const TodoDetails = ({}: Props) => {
           setTodo({
             id: docSnapshot.id,
             subject: docSnapshot.data().subject as string,
-            isCompleted: docSnapshot.data().completed as boolean,
+            completed: docSnapshot.data().completed as boolean,
           });
         } else {
           console.log('No such document!');
@@ -73,7 +73,7 @@ const TodoDetails = ({}: Props) => {
   const handleEdit = () => {
     if (todo) {
       setSubject(todo.subject);
-      setIsCompleted(todo.isCompleted);
+      setIsCompleted(todo.completed);
       setDoneFetch(true);
       setEditable(true);
     }
@@ -81,12 +81,12 @@ const TodoDetails = ({}: Props) => {
   
   const handleUndo = async (id: string) => {
     const subject = localStorage.getItem('subject');
-    const isCompleted = localStorage.getItem('isCompleted') === "True"
+    const completed = localStorage.getItem('completed') === "True"
     ? true : false;
     console.info("subject: " + subject);
-    console.info("isCompleted: " + isCompleted);
+    console.info("completed: " + completed);
     setUndoAble(false);
-    await updateDoc(doc(db, "todos", id), { subject, isCompleted });
+    await updateDoc(doc(db, "todos", id), { subject, completed });
   }
 
   const handleSave = async (id: string) => {
@@ -94,11 +94,11 @@ const TodoDetails = ({}: Props) => {
     setUndoAble(true);
     if (todo) {
       localStorage.setItem('subject', todo.subject);
-      localStorage.setItem('isCompleted', todo.isCompleted ? "True" : "False");
+      localStorage.setItem('completed', todo.completed ? "True" : "False");
     }
 
 
-    await updateDoc(doc(db, "todos", id), { subject, isCompleted });
+    await updateDoc(doc(db, "todos", id), { subject, completed });
   };
 
   if (!todo) {
@@ -142,22 +142,22 @@ const TodoDetails = ({}: Props) => {
         <input
           type="checkbox"
           id="completed"
-          checked={doneFetch ? isCompleted : todo.isCompleted}
+          checked={doneFetch ? completed : todo.completed}
           disabled={!editable}
           onChange={(e) => setIsCompleted(e.target.checked)}
         />
-        {isCompleted ? "Yes" : "No"}
+        {completed ? "Yes" : "No"}
         </>
         :
         <>
         <input
           type="checkbox"
           id="completed"
-          checked={todo.isCompleted}
+          checked={todo.completed}
           disabled={!editable}
           onChange={(e) => setIsCompleted(e.target.checked)}
         />
-        {todo.isCompleted ? "Yes" : "No"}
+        {todo.completed ? "Yes" : "No"}
         </>
         
         }
