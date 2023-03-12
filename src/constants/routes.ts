@@ -8,4 +8,4 @@ export const DETAIL = '/detail';
 export const EVEN_ARRAY = '/even_array';
 
 export const TODOS = '/todos';
-export const TODO_DETAIL = '/todos/:id';
+export const TODO_DETAILS_PATH = '/todos/:id';

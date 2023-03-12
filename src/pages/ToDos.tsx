@@ -7,7 +7,7 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import ViewAgendaOutlined from "@mui/icons-material/ViewAgendaOutlined";
 
 import { Box, TextField, Button, Grid } from "@mui/material";
-
+import { TODO_DETAILS_PATH } from '../constants/routes';
 
 import {
   collection, 
@@ -131,7 +131,7 @@ const ToDos = () => {
                 <Button variant='contained'
                   fullWidth
                   color='primary'
-                  onClick={ () => navigate(`/todos/${todo.id}`) }
+                  onClick={ () => navigate(TODO_DETAILS_PATH.replace(':id', todo.id)) }
                 >
                   View {" "}
                   <ViewAgendaOutlined />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { OTP_FORM } from '../constants/routes';
 interface Props {
   onMobileNumberChange: (mobileNumber: string) => void;
 }
@@ -24,7 +24,7 @@ const MobileForm: React.FC<Props> = ({ onMobileNumberChange }) => {
       setMobileNumberError("Mobile Number cannot be blank");
     } else {
       localStorage.setItem('mobileNumber', mobileNumber);
-      navigate('/otp');
+      navigate(OTP_FORM);
     }
     
   };

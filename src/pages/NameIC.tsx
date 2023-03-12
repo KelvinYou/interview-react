@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { DETAIL } from '../constants/routes';
 
 const NameIC = () => {
   const [name, setName] = useState('');
@@ -37,7 +38,7 @@ const NameIC = () => {
     if (name && icNumber) {
       localStorage.setItem('name', name);
       localStorage.setItem('icNumber', icNumber);
-      navigate("/detail");
+      navigate(DETAIL);
     }
     
   };

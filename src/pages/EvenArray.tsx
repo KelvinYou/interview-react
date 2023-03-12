@@ -2,6 +2,8 @@ import React from 'react';
 
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
+import { HOME } from '../constants/routes';
+
 type ArrayNum = {
   [key: string]: number[]
 };
@@ -65,7 +67,7 @@ const EvenArray = () => {
 
 
       <Button variant='contained' onClick={ () => {
-        navigate("/");
+        navigate(HOME);
       } }>Back to Home</Button>
     </div>
   );

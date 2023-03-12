@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import OTPTimer from '../components/OTPTimer'
 import { useNavigate } from 'react-router-dom';
+import { NAME_IC } from '../constants/routes';
 
 const OTPForm = () => {
   const [otpNumber, setOtpNumber] = useState('');
@@ -15,7 +16,7 @@ const OTPForm = () => {
     event.preventDefault();
     localStorage.setItem('otpNumber', otpNumber);
     if (otpNumber == "123456")
-      navigate('/name_ic');
+      navigate(NAME_IC);
     else {
       alert("wrong otp, the otp is 123456");
     }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { HOME } from '../constants/routes';
 
 const Detail = () => {
   const [mobileNumber, setMobileNumber] = useState('');
@@ -39,7 +40,7 @@ const Detail = () => {
 
       <br/>
       <button onClick={() => {
-        navigate("/");
+        navigate(HOME);
       }}>Back to Home</button>
     </>
   )

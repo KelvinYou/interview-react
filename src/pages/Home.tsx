@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
+import { MOBILE_FORM, EVEN_ARRAY, TODOS } from '../constants/routes';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,17 +16,17 @@ const Home = () => {
       <br/>
       <br/>
       <Button variant='contained'
-      onClick={() => { navigate("/mobile_form") }}>Beginner</Button>
+      onClick={() => { navigate(MOBILE_FORM) }}>Beginner</Button>
       <br/>
       <br/>
 
       <Button variant='contained'
-      onClick={() => { navigate("/even_array") }}>Inter</Button>
+      onClick={() => { navigate(EVEN_ARRAY) }}>Inter</Button>
       <br/>
       <br/>
 
       <Button variant='contained'
-      onClick={() => { navigate("/todos") }}>Advance</Button>
+      onClick={() => { navigate(TODOS) }}>Advance</Button>
       <br/>
       <br/>
       <br/>

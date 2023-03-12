@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 interface TimerProps {
   initialMinutes: number;
 }
@@ -34,7 +33,8 @@ const OTPTimer: React.FC<TimerProps> = ({ initialMinutes }) => {
   };
 
   // chickable when reach below 3
-  const disableResetButton = minutes > 3 || isTimeUp;
+  const disableResetButton = minutes > 3 || (minutes === 3 && seconds !== 0) || isTimeUp;
+
 
   return (
     <div>

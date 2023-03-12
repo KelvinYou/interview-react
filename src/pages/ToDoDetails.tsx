@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { db } from "../services/config";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { TODOS } from '../constants/routes';
 
 import {
   collection, 
@@ -188,7 +189,7 @@ const TodoDetails = ({}: Props) => {
       <br/>
 
       <Button variant="contained"
-      onClick={() => navigate("/todos")}>Back to Todos</Button>
+      onClick={() => navigate(TODOS)}>Back to Todos</Button>
     </div>
   );
 };
